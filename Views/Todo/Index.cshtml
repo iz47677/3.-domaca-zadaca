@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<EntityFramework.TodoItem>
+
+@{
+    ViewData["Title"] = "Active Todo";
+}
+
+<h3>Active Todo</h3>
+<ul>
+    <li><a asp-area="" asp-controller="Todo" asp-action="Add">Add new todo</a></li>
+    <li><a asp-area="" asp-controller="Todo" asp-action="Completed">See completed todos</a></li>
+</ul>
+@foreach (var item in Model)
+{
+    <ul>
+        <li><b>@Html.DisplayFor(modelItem => item.Text)</b></li>
+        <li>@Html.DisplayFor(modelItem => item.DateCreated)</li>
+        <li><a href="~/Todo/MarkAsCompleted?todoId=@item.Id">Mark as completed</a></li>
+    </ul>
+}

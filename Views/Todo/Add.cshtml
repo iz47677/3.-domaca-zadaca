@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model AddTodoViewModel
+
+@{
+    ViewData["Title"] = "Add new";
+}
+
+<h3>Add new todo</h3>
+@using (Html.BeginForm("Add", "Todo", FormMethod.Post))
+{
+    @Html.TextBoxFor(m => m.Text);
+    @if ((string)ViewData["Error"] == "true")
+    {
+        <p style="color:red;">Error: text required</p>
+    }
+    <input type="submit" value="Add">
+}
+<a asp-area="" asp-controller="Todo" asp-action="Index">Back</a>
